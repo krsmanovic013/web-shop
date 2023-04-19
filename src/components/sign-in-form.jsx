@@ -4,6 +4,8 @@ import FormInput from "./form-input";
 import "./sign-in-form.scss";
 import Button from "./button";
 
+import { UserContext } from "../contexts/user-context";
+
 const SignInForm = ({ onClickHandler }) => {
   const defaultFormFields = {
     email: "",
@@ -21,7 +23,7 @@ const SignInForm = ({ onClickHandler }) => {
     e.preventDefault();
 
     try {
-      const response = await signInAuthUserWithEmailAndPassword(
+      const { user } = await signInAuthUserWithEmailAndPassword(
         email,
         password
       );
